@@ -6,6 +6,31 @@ use Illuminate\Http\Request;
 
 class EmpleadosController extends Controller
 {
+    public function altaempleado(){
+        return view('altaempleado');
+    }
+    public function guardarempleado(Request $request)
+    {
+       // return $request;
+       $nombre = $request->nombre;
+       $sexo = $request->sexo;
+       if($sexo =='M')
+       {
+        echo "El empleado $nombre es de sexo Masculino";
+       }
+       else{
+        echo "El empleado $nombre es de sexo Femenino";
+       }
+    }
+
+    public function vista1()
+    {
+        return view('vista1');
+    }    
+    public function vista2()
+    {
+        return view('vista2');
+    }
     public function vb()
     {
         return view('bootstrap');
