@@ -24,6 +24,20 @@ Route::get('altaempleado', [EmpleadosController::class,'altaempleado'])->name('a
 
 Route::post('guardarempleado', [EmpleadosController::class,'guardarempleado'])->name('guardarempleado');
 
+Route::get('eloquent', [EmpleadosController::class,'eloquent'])->name('eloquent');
+
+Route::get('reporteempleados', [EmpleadosController::class,'reporteempleados'])->name('reporteempleados');
+
+Route::get('desactivaempleado/{ide}', [EmpleadosController::class,'desactivaempleado'])->name('desactivaempleado');
+
+Route::get('activarempleado/{ide}', [EmpleadosController::class,'activarempleado'])->name('activarempleado');
+
+Route::get('borraempleado/{ide}', [EmpleadosController::class,'borraempleado'])->name('borraempleado');
+
+Route::get('modificaempleado/{ide}', [EmpleadosController::class,'modificaempleado'])->name('modificaempleado');
+
+Route::post('guardacambios', [EmpleadosController::class,'guardacambios'])->name('guardacambios');
+
 Route::get('/', function () {
     return view('welcome');
 });
