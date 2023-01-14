@@ -89,7 +89,7 @@
 
                         <div class="form-group">
                             <label for="dni">Departamento:</label>
-                            <select name='idd' class="custom-select">
+                            <select name='idd' class="form-select">
                                 <option selected="">Selecciona un departamento</option>
                                 @foreach ($departamentos as $depa)
                                     <option value="{{ $depa->idd }}">{{ $depa->nombre }}</option>
@@ -101,12 +101,13 @@
                 </div>
                 <div class="form-group">
                     <label for="dni">Descripción:</label>
-                    <textarea name="descripcion" id="descripcion" class="form-control" tabindex="5">
-            </textarea>
+                    <textarea name="descripcion" id="descripcion" class="form-control" tabindex="5"></textarea>
                 </div>
                 <div class="row">
-                    <div class="col-xs-6 col-md-6"><input type="submit" value="Guardar"
-                            class="btn btn-danger btn-block btn-lg" tabindex="7" title="Guardar datos ingresados"></div>
+                    <div class="col-xs-12 col-sm-12 col-md-12 text-center mt-4">
+                        <input type="submit" value="Guardar" class="btn btn-success btn-block btn-lg" tabindex="7" title="Guardar datos ingresados">
+                        <a type="button"  href="{{url('reporteempleados')}}" class="btn btn-secondary btn-block btn-lg" tabindex="7" >Regresar</a>
+                    </div>
                 </div>
         </form>
     @stop

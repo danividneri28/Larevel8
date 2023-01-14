@@ -104,7 +104,17 @@ class EmpleadosController extends Controller
     public function modificaempleado($ide)
     {
         $consulta = empleados::withTrashed()->join('departamentos','empleados.idd','=','departamentos.idd')
-                        ->select('empleados.ide','empleados.nombre','empleados.apellido','empleados.sexo','departamentos.nombre as depa','empleados.email','empleados.idd','empleados.celular','empleados.descripcion')
+                        ->select(
+                            'empleados.ide',
+                            'empleados.nombre',
+                            'empleados.apellido',
+                            'empleados.sexo',
+                            'departamentos.nombre as depa',
+                            'empleados.email',
+                            'empleados.idd',
+                            'empleados.celular',
+                            'empleados.descripcion'
+                            )
                         ->where('ide',$ide)
                         ->get();
         $departamentos = departamentos::all();

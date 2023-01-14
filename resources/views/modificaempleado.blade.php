@@ -112,13 +112,12 @@
                 </div>
                 <div class="form-group">
                     <label for="dni">Descripción:</label>
-                    <textarea name="descripcion" id="descripcion" class="form-control" tabindex="5">
-                {{ $consulta->descripcion }}
-            </textarea>
+                    <textarea name="descripcion" id="descripcion" class="form-control" tabindex="5">{{ $consulta->descripcion }}</textarea>
                 </div>
-                <div class="row">
-                    <div class="col-xs-6 col-md-6"><input type="submit" value="Guardar"
-                            class="btn btn-danger btn-block btn-lg" tabindex="7" title="Guardar datos ingresados">
+                <div class="row mt-4">
+                    <div class="col-xs-12 col-md-12 text-center">
+                        <input type="submit" value="Guardar" class="btn btn-danger btn-block btn-lg" tabindex="7" title="Guardar datos ingresados">
+                        <a type="button"  href="{{url('reporteempleados')}}" class="btn btn-secondary btn-block btn-lg" tabindex="7" >Regresar</a>
                     </div>
                 </div>
         </form>
