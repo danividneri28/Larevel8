@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\empleados;
 use App\Models\nominas;
 use App\Models\departamentos;
+use Session;
 class EmpleadosController extends Controller
 {
 
@@ -58,31 +59,28 @@ class EmpleadosController extends Controller
         $empleados->idd = $request->idd;
         $empleados->save();
 
+       Session::flash('mensaje', "El empleado $request->nombre $request->apellido ha sido dado de alta correctament");
 
-        return view('mensajes')
-        ->with('proceso',"Alta de empleados")
-        ->with('mensaje',"El empleado $request->nombre $request->apellido ha sido dado de alta correctamente")
-        ->with('error',0);
+            return redirect()->route('reporteempleados');
         
     }
 
     public function activarempleado($ide)
     {
         empleados::withTrashed()->where('ide',$ide)->restore();
-        return view('mensajes')
-        ->with('proceso',"Activar empleado")
-        ->with('mensaje',"El empleado ha sido activado correctamente")
-        ->with('error',0);
+
+        Session::flash('mensaje', "El empleado ha sido activado correctamente");
+
+            return redirect()->route('reporteempleados');
     }
 
     public function desactivaempleado($ide)
     {
         $empleados = empleados::find($ide);
         $empleados->delete();
-        return view('mensajes')
-        ->with('proceso',"Desactivar empleado")
-        ->with('mensaje',"El empleado ha sido desactivado correctamente")
-        ->with('error',0);
+        Session::flash('mensaje', "El empleado ha sido desactivado correctamente");
+
+            return redirect()->route('reporteempleados');
         
     }
     public function borraempleado($ide)
@@ -92,16 +90,14 @@ class EmpleadosController extends Controller
         if($cuantos==0)
         {
         empleados::withTrashed()->find($ide)->forceDelete();
-        return view('mensajes')
-        ->with('proceso',"Borrar empleado")
-        ->with('mensaje',"El empleado ha sido eliminado del sistema correctamente")
-        ->with('error',0);
+        Session::flash('mensaje', "El empleado ha sido borrado del sistema correctamente");
+
+        return redirect()->route('reporteempleados');
         }
         else{
-            return view('mensajes')
-            ->with('proceso',"Borrar empleado")
-            ->with('mensaje',"El empleado no se puede eliminar ya que tiene registros en otra tabla")
-            ->with('error',1);
+            Session::flash('mensaje', "El empleado no se puede eliminar ya que tiene registros en otra tabla");
+
+            return redirect()->route('reporteempleados');
         }
     }
     
@@ -127,7 +123,7 @@ class EmpleadosController extends Controller
         
     ]);
 
-        $empleados = empleados::find($request->ide);
+        $empleados = empleados::withTrashed()->find($request->ide);
         $empleados->ide = $request->ide;
         $empleados->nombre = $request->nombre;
         $empleados->apellido = $request->apellido;
@@ -139,10 +135,13 @@ class EmpleadosController extends Controller
         $empleados->save();
 
 
-        return view('mensajes')
+      /*  return view('mensajes')
         ->with('proceso',"Modifica empleados")
         ->with('mensaje',"El empleado $request->nombre $request->apellido ha sido modificado correctamente")
-        ->with('error',0);
+        ->with('error',0); */
+        Session::flash('mensaje', "El empleado $request->nombre ha sido modificado correctamente");
+
+        return redirect()->route('reporteempleados');
     }
 
     public function eloquent()
@@ -282,7 +281,7 @@ class EmpleadosController extends Controller
 
         //return view('empleado', ['nombre' => $nombre, 'dias' => $dias]);
 
-       /* return view('empleado')
+        /* return view('empleado')
         ->with('nombre', $nombre)
         ->with('dias', $dias);*/
     }
