@@ -93,11 +93,8 @@
                                 <label class="custom-control-label" for="sexo2">Femenino</label>
                             </div>
                         @endif
-
                     </div>
-
                     <div class="col-xs-6 col-sm-6 col-md-6">
-
                         <div class="form-group">
                             <label for="dni">Departamento:</label>
                             <select name='idd' class="form-select">
@@ -107,11 +104,10 @@
                                 @endforeach
                             </select>
                         </div>
-
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="dni">Descripción:</label>
+                    <label class="form-label" for="dni">Descripción:</label>
                     <textarea name="descripcion" id="descripcion" class="form-control" tabindex="5">{{ $consulta->descripcion }}</textarea>
                 </div>
                 <div class="row mt-4">

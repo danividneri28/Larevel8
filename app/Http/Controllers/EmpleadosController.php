@@ -59,7 +59,7 @@ class EmpleadosController extends Controller
         $empleados->idd = $request->idd;
         $empleados->save();
 
-       Session::flash('mensaje', "El empleado $request->nombre $request->apellido ha sido dado de alta correctament");
+        Session::flash('mensaje', "El empleado $request->nombre $request->apellido ha sido dado de alta correctament");
 
             return redirect()->route('reporteempleados');
         
@@ -145,7 +145,7 @@ class EmpleadosController extends Controller
         $empleados->save();
 
 
-      /*  return view('mensajes')
+    /*  return view('mensajes')
         ->with('proceso',"Modifica empleados")
         ->with('mensaje',"El empleado $request->nombre $request->apellido ha sido modificado correctamente")
         ->with('error',0); */
@@ -158,7 +158,7 @@ class EmpleadosController extends Controller
     {
         //$consulta = empleados::all();\
 
-       /* $empleados = new empleados;
+    /* $empleados = new empleados;
         $empleados->ide = 3;
         $empleados->nombre = "joel";
         $empleados->apellido = "Lara";
@@ -174,7 +174,7 @@ class EmpleadosController extends Controller
         'celular' =>"7234244343", 'sexo' =>"F", 'descripcion' => "prueba", 'idd'=> 2
         ]);*/
 
-       /* $empleados = empleados::find(2);
+    /* $empleados = empleados::find(2);
         $empleados->nombre = "Dulce";
         $empleados->apellido = "Montiel";
         $empleados->save();*/
@@ -191,21 +191,21 @@ class EmpleadosController extends Controller
     //    $empleados=empleados::where('sexo', 'M')
     //    ->where('apellido', 'Lara')
     //    ->delete();
-       
+
        // $consulta = empleados::all();
 
        //$consulta = empleados::withTrashed()->get();
 
         /* $consulta = empleados::onlyTrashed()
-             ->where('sexo','M')
+            ->where('sexo','M')
             ->get(); */
 
         /*  empleados::withTrashed()->where('ide',3)->restore();
-         $consulta = empleados::all();
+        $consulta = empleados::all();
         return $consulta;
          return "restauracion realizada";  */
 
-         /* $empleados=empleados::find(1)->forceDelete();
+        /* $empleados=empleados::find(1)->forceDelete();
          $consulta = empleados::all(); */
 
 
